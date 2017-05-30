@@ -3,6 +3,47 @@
 body {
 	background: #000 url("../assets/bg-wall.jpg") no-repeat center center fixed;
 	background-size: cover;
+	animation: hue-flicker 10s infinite;
+}
+
+@keyframes hue-flicker {
+	0% {
+		filter: none;
+	}
+
+	53% {
+		filter: none;
+	}
+
+	55% {
+		filter: hue-rotate(90deg);
+	}
+
+	59% {
+		filter: hue-rotate(90deg);
+	}
+
+	63% {
+		filter: none;
+	}
+}
+
+@keyframes social-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(-30deg);
+	}
+
+	75% {
+		transform: rotate(30deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
 }
 
 #glitch-header {
@@ -29,6 +70,23 @@ body {
 	transition: 0.2s transform, 0.8s filter;
 	cursor: pointer;
 	margin: 0.5em;
+	animation: social-spin 1.5s;
+}
+
+.social-link:nth-of-type(2) > .social-glyphs{
+	animation-delay: 0.1s
+}
+
+.social-link:nth-of-type(3) > .social-glyphs{
+	animation-delay: 0.2s
+}
+
+.social-link:nth-of-type(4) > .social-glyphs{
+	animation-delay: 0.3s
+}
+
+.social-link:nth-of-type(5) > .social-glyphs{
+	animation-delay: 0.4s
 }
 
 .social-glyphs:hover {

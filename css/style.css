@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee');
+@import url('https://fonts.googleapis.com/css?family=Iceland');
 
 body {
 	background: #000 url("../assets/bg-wall.jpg") no-repeat center center fixed;
 	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;
 	        animation: hue-flicker 10s infinite;
+	color: white;
+	text-align: center;
+	font-family: 'Iceland', cursive;
+}
+
+#event-info {
+	font-size: 3vw;
+	line-height: 4px;
+	text-shadow: 4px 2px #BF55EC;
 }
 
 @-webkit-keyframes hue-flicker {
@@ -113,7 +123,6 @@ body {
 	font-family: 'Bungee', cursive;
 	font-style: italic;
 	color: white;
-	text-align: center;
 }
 
 #social-bar {

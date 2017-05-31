@@ -164,11 +164,6 @@ body {
 	        animation-delay: 0.3s
 }
 
-.social-link:nth-of-type(5) > .social-glyphs{
-	-webkit-animation-delay: 0.4s;
-	        animation-delay: 0.4s
-}
-
 .social-glyphs:hover {
 	-webkit-transform: scale(1.1) rotate(-30deg);
 	        transform: scale(1.1) rotate(-30deg);

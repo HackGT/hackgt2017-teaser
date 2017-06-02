@@ -18,9 +18,18 @@ body {
 	color: white;
 	text-align: center;
 	font-family: 'Iceland', cursive;
-		height: 100vh;
-		display: flex;
-		flex-direction: column;
+	height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: space-between;
+}
+
+.main-page > * {
+	width: 100%;
+}
+
+.main-page > .content {
+	align-self: center;
 }
 
 #event-info {
@@ -28,10 +37,11 @@ body {
 }
 
 #event-info * {
-		margin: 0;
+	margin: 0;
 }
 
 footer {
+	align-self: flex-end;
 }
 
 @-webkit-keyframes hue-flicker {
@@ -139,16 +149,15 @@ footer {
 #glitch-header {
 	font-family: 'Bungee', cursive;
 	font-style: italic;
-	color: white;
 }
 
 #social-bar {
 	width: 5%;
 	min-width: 64px;
-		padding-top: 1em;
-		padding-left: 1em;
-		position: absolute;
-		left: 0;
+	padding-top: 1em;
+	padding-left: 1em;
+	position: absolute;
+	left: 0;
 }
 
 .social-glyphs {
@@ -190,7 +199,6 @@ footer {
 }
 
 .glitch {
-	color: white;
 	position: relative;
 	margin: 0 auto;
 	cursor: pointer;

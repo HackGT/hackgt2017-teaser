@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee');
 @import url('https://fonts.googleapis.com/css?family=Iceland');
 
-body {
-		margin: 0;
-		font-size: 32px;
+body, * {
+	margin: 0;
+}
+
+body, input {
+	font-size: 32px;
+	font-family: 'Iceland', cursive;
+    color: white;
 }
 
 .alleyway {
-		height: 100vh;
+	height: 100vh;
 }
 
 .main-page {
@@ -15,9 +20,7 @@ body {
 	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;
 					animation: hue-flicker 10s infinite;
-	color: white;
 	text-align: center;
-	font-family: 'Iceland', cursive;
 	height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
@@ -32,12 +35,19 @@ body {
 	align-self: center;
 }
 
-#event-info {
-	text-shadow: 4px 2px #BF55EC;
+.main-page input[type="email"] {
+    min-width: 15em;
+    margin-top: 1em;
+    background-color: RGBA(255,255,255,.5);
+    border: 0;
 }
 
-#event-info * {
-	margin: 0;
+.main-page input[type="email"]::placeholder {
+    color: white;
+}
+
+#event-info {
+	text-shadow: 4px 2px #BF55EC;
 }
 
 footer {
@@ -149,6 +159,7 @@ footer {
 #glitch-header {
 	font-family: 'Bungee', cursive;
 	font-style: italic;
+    font-size: 150%;
 }
 
 #social-bar {

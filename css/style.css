@@ -2,25 +2,25 @@
 @import url('https://fonts.googleapis.com/css?family=Iceland');
 
 body {
-    margin: 0;
-    font-size: 32px;
+		margin: 0;
+		font-size: 32px;
 }
 
 .alleyway {
-    height: 100vh;
+		height: 100vh;
 }
 
 .main-page {
 	background: #000 url("../assets/bg-wall.jpg") no-repeat center center fixed;
 	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;
-	        animation: hue-flicker 10s infinite;
+					animation: hue-flicker 10s infinite;
 	color: white;
 	text-align: center;
 	font-family: 'Iceland', cursive;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
 }
 
 #event-info {
@@ -28,7 +28,7 @@ body {
 }
 
 #event-info * {
-    margin: 0;
+		margin: 0;
 }
 
 footer {
@@ -37,102 +37,102 @@ footer {
 @-webkit-keyframes hue-flicker {
 	0% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 
 	53% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 
 	55% {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="90" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(90deg);
-		        filter: hue-rotate(90deg);
+						filter: hue-rotate(90deg);
 	}
 
 	59% {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="90" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(90deg);
-		        filter: hue-rotate(90deg);
+						filter: hue-rotate(90deg);
 	}
 
 	63% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 }
 
 @keyframes hue-flicker {
 	0% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 
 	53% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 
 	55% {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="90" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(90deg);
-		        filter: hue-rotate(90deg);
+						filter: hue-rotate(90deg);
 	}
 
 	59% {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="90" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(90deg);
-		        filter: hue-rotate(90deg);
+						filter: hue-rotate(90deg);
 	}
 
 	63% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 	}
 }
 
 @-webkit-keyframes social-spin {
 	0% {
 		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
+						transform: rotate(0deg);
 	}
 
 	25% {
 		-webkit-transform: rotate(-30deg);
-		        transform: rotate(-30deg);
+						transform: rotate(-30deg);
 	}
 
 	75% {
 		-webkit-transform: rotate(30deg);
-		        transform: rotate(30deg);
+						transform: rotate(30deg);
 	}
 
 	100% {
 		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
+						transform: rotate(0deg);
 	}
 }
 
 @keyframes social-spin {
 	0% {
 		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
+						transform: rotate(0deg);
 	}
 
 	25% {
 		-webkit-transform: rotate(-30deg);
-		        transform: rotate(-30deg);
+						transform: rotate(-30deg);
 	}
 
 	75% {
 		-webkit-transform: rotate(30deg);
-		        transform: rotate(30deg);
+						transform: rotate(30deg);
 	}
 
 	100% {
 		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
+						transform: rotate(0deg);
 	}
 }
 
@@ -145,10 +145,10 @@ footer {
 #social-bar {
 	width: 5%;
 	min-width: 64px;
-    padding-top: 1em;
-    padding-left: 1em;
-    position: absolute;
-    left: 0;
+		padding-top: 1em;
+		padding-left: 1em;
+		position: absolute;
+		left: 0;
 }
 
 .social-glyphs {
@@ -162,31 +162,31 @@ footer {
 	transition: 0.2s transform, 0.8s filter, 0.2s -webkit-transform, 0.8s -webkit-filter;
 	cursor: pointer;
 	-webkit-animation: social-spin 1.5s;
-	        animation: social-spin 1.5s;
-    margin-bottom: 25%
+					animation: social-spin 1.5s;
+		margin-bottom: 25%
 }
 
 .social-link:nth-of-type(2) > .social-glyphs{
 	-webkit-animation-delay: 0.1s;
-	        animation-delay: 0.1s
+					animation-delay: 0.1s
 }
 
 .social-link:nth-of-type(3) > .social-glyphs{
 	-webkit-animation-delay: 0.2s;
-	        animation-delay: 0.2s
+					animation-delay: 0.2s
 }
 
 .social-link:nth-of-type(4) > .social-glyphs{
 	-webkit-animation-delay: 0.3s;
-	        animation-delay: 0.3s
+					animation-delay: 0.3s
 }
 
 .social-glyphs:hover {
 	-webkit-transform: scale(1.1) rotate(-30deg);
-	        transform: scale(1.1) rotate(-30deg);
+					transform: scale(1.1) rotate(-30deg);
 	filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="360" /></filter></svg>#filter');
 	-webkit-filter: hue-rotate(360deg);
-	        filter: hue-rotate(360deg);
+					filter: hue-rotate(360deg);
 }
 
 .glitch {
@@ -199,103 +199,103 @@ footer {
 
 .glitch:hover {
 	-webkit-animation: flicker 3s infinite;
-	        animation: flicker 3s infinite;
+					animation: flicker 3s infinite;
 }
 
 @-webkit-keyframes flicker {
 	5% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	6% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #3498db;
 		-webkit-transform: scaleX(-1);
-		        transform: scaleX(-1);
+						transform: scaleX(-1);
 	}
 
 	11% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #3498db;
 		-webkit-transform: scaleX(-1);
-		        transform: scaleX(-1);
+						transform: scaleX(-1);
 	}
 
 	12% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	20% {
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		color: white;
 	}
 
 	21% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	28% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	29% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	35% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	36% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	42% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	44% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
@@ -305,97 +305,97 @@ footer {
 @keyframes flicker {
 	5% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	6% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #3498db;
 		-webkit-transform: scaleX(-1);
-		        transform: scaleX(-1);
+						transform: scaleX(-1);
 	}
 
 	11% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #3498db;
 		-webkit-transform: scaleX(-1);
-		        transform: scaleX(-1);
+						transform: scaleX(-1);
 	}
 
 	12% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	20% {
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		color: white;
 	}
 
 	21% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	28% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	29% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	35% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
 	36% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	42% {
 		-webkit-filter: invert();
-		        filter: invert();
+						filter: invert();
 		color: #F62459;
 		-webkit-transform: scaleY(-1);
-		        transform: scaleY(-1);
+						transform: scaleY(-1);
 	}
 
 	44% {
 		-webkit-filter: none;
-		        filter: none;
+						filter: none;
 		-webkit-transform: none;
-		        transform: none;
+						transform: none;
 		color: white;
 	}
 
@@ -406,11 +406,11 @@ footer {
 	from {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="0" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(0deg);
-		        filter: hue-rotate(0deg);
+						filter: hue-rotate(0deg);
 	} to {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="360" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(360deg);
-		        filter: hue-rotate(360deg);
+						filter: hue-rotate(360deg);
 	}
 }
 
@@ -418,11 +418,11 @@ footer {
 	from {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="0" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(0deg);
-		        filter: hue-rotate(0deg);
+						filter: hue-rotate(0deg);
 	} to {
 		filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="hueRotate" color-interpolation-filters="sRGB" values="360" /></filter></svg>#filter');
 		-webkit-filter: hue-rotate(360deg);
-		        filter: hue-rotate(360deg);
+						filter: hue-rotate(360deg);
 	}
 }
 
@@ -601,7 +601,7 @@ footer {
 	overflow: hidden;
 	clip: rect(0, 900px, 0, 0);
 	-webkit-animation: noise-anim 2s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
-	        animation: noise-anim 2s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
+					animation: noise-anim 2s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
 }
 
 @-webkit-keyframes noise-anim-2 {
@@ -747,18 +747,18 @@ footer {
 	overflow: hidden;
 	clip: rect(0, 900px, 0, 0);
 	-webkit-animation: noise-anim-2 3s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
-	        animation: noise-anim-2 3s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
+					animation: noise-anim-2 3s infinite linear alternate-reverse, hue-rotate 8s infinite, scale-text-offset-pos 4s infinite ease-in;
 }
 
 .glitch:nth-of-type(odd):before {
 	-webkit-animation-delay: -1.5s;
-	        animation-delay: -1.5s;
+					animation-delay: -1.5s;
 }
 .glitch:nth-of-type(odd):after {
 	-webkit-animation-delay: -1.5s;
-	        animation-delay: -1.5s;
+					animation-delay: -1.5s;
 }
 .glitch:nth-of-type(odd) {
 	-webkit-animation-delay: -1.5s;
-	        animation-delay: -1.5s;
+					animation-delay: -1.5s;
 }

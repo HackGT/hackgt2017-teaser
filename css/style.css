@@ -12,7 +12,8 @@ body, input {
 }
 
 .alleyway {
-	height: 100vh;
+  height: 100vh;
+  background: url("../assets/NightSkyAlley.png");
 }
 
 .main-page {

@@ -67,8 +67,7 @@ function init() {
         sizeAttenuation: false
     });
 
-    // particles = new THREE.BufferGeometry();
-    particles = new THREE.SphereBufferGeometry( 50, 32, 32 );
+    particles = new THREE.BufferGeometry();
     particlePositions = new Float32Array(maxParticleCount * 3);
 
     for (var i = 0; i < maxParticleCount; i++) {
@@ -88,7 +87,7 @@ function init() {
         });
     }
 
-    particles.setDrawRange(0, particleCount * 3);
+    particles.setDrawRange(0, particleCount);
     particles.addAttribute('position', new THREE.BufferAttribute(particlePositions, 3).setDynamic(true));
 
     // create the particle system

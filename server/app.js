@@ -50,7 +50,21 @@ app.post('/preregister', function(req, res) {
   })
 })
 
+app.post('/school-hint', function(req, res) {
+  const school = req.body.school
 
+  if (!school) {
+    res.status(400).json({ error: 'nothing to hint' })
+    return
+  }
+
+  if (school.length <= 3) {
+    res.json({ hints: [], message: 'need more than 3 letters' })
+    return
+  }
+
+  res.json({ hints: ['TODO ACTUALLY QUERY A DATABASE'], message: 'not yet implemented, maybe cache answers as well?' })
+})
 
 app.listen(3000, function() {
   console.log('Server started on port 3000')

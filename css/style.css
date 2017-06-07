@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee');
 @import url('https://fonts.googleapis.com/css?family=Iceland');
 
+body {
+	background: black;
+}
+
 body, * {
 	margin: 0;
 }
@@ -16,7 +20,35 @@ body, input {
   background: url("../assets/NightSkyAlley.png");
 }
 
+#front-stars {
+	height: 50vh;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+}
+
+#mid-stars {
+	height: 50vh;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 25vh;
+}
+
+#back-stars {
+	height: 50vh;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 50vh;
+}
+
 .main-page {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 100vh;
 	background: #000 url("../assets/bg-wall.jpg") no-repeat center center fixed;
 	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;

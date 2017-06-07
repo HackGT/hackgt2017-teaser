@@ -1,5 +1,4 @@
-particlesJS('particles-js',
-  {
+var BASE_CONFIG = {
     "particles": {
       "number": {
         "value": 80,
@@ -55,7 +54,7 @@ particlesJS('particles-js',
       },
       "move": {
         "enable": true,
-        "speed": 6,
+        "speed": 1,
         "direction": "none",
         "random": false,
         "straight": false,
@@ -114,5 +113,12 @@ particlesJS('particles-js',
       "background_repeat": "no-repeat",
       "background_size": "cover"
     }
-  }
-);
+  };
+
+
+var front_config = JSON.parse(JSON.stringify(BASE_CONFIG));
+particlesJS('front-stars', front_config);
+
+var mid_config = JSON.parse(JSON.stringify(BASE_CONFIG));
+mid_config.particles.size.value = 1;
+particlesJS('mid-stars', mid_config);

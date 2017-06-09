@@ -1,5 +1,8 @@
+const fs = require('fs')
+
 const app = require('express')()
 const bodyParser = require('body-parser')
+const logger = require('morgan')
 
 const url = 'mongodb://localhost:27017/teaser2017'
 const db = require('monk')(url)
@@ -7,6 +10,9 @@ const people = db.get('people')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(logger('combined'))
+
+const schools = JSON.parse(fs.readFileSync('data/schools.json'))
 
 app.get('/', function(req, res) {
   res.send('Hello, HackGT. Status OK')
@@ -51,19 +57,19 @@ app.post('/preregister', function(req, res) {
 })
 
 app.post('/school-hint', function(req, res) {
-  const school = req.body.school
+  const frag = (req.body.school || '').toLowerCase()
 
-  if (!school) {
+  if (!frag) {
     res.status(400).json({ error: 'nothing to hint' })
     return
   }
 
-  if (school.length <= 3) {
+  if (frag.length <= 3) {
     res.json({ hints: [], message: 'need more than 3 letters' })
     return
   }
 
-  res.json({ hints: ['TODO ACTUALLY QUERY A DATABASE'], message: 'not yet implemented, maybe cache answers as well?' })
+  res.json({ hints: schools.filter((name) => (name.length >= frag.length && name.substring(0, frag.length).toLowerCase() == frag)) })
 })
 
 app.listen(3000, function() {

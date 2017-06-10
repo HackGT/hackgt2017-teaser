@@ -54,7 +54,7 @@ body, input {
 	-webkit-animation: hue-flicker 10s infinite;
 					animation: hue-flicker 10s infinite;
 	text-align: center;
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: space-between;
@@ -68,11 +68,11 @@ body, input {
 	align-self: center;
 }
 
-#preregister input {
+input {
 	width: 15em;
 	max-width: 100%;
 	display: block;
-	margin: .5em auto;
+	margin: .2em auto;
 	background-color: RGBA(0,0,0,.5);
 	border: 0;
 	border-radius: .3em;
@@ -81,17 +81,22 @@ body, input {
 	box-sizing: border-box;
 }
 
-#preregister input:focus {
+input:focus {
 	outline: none;
 }
 
-#preregister input::placeholder {
+input::placeholder {
 	color: gray;
 }
 
-#preregister input[type="submit"] {
+input[type="submit"], input[type="button"] {
 	background-color: rgba(0,255,255,.65);
 	border: rgba(0,100,100,.65) .3em solid;
+	width: 7em;
+}
+
+.sponsor-btn {
+	margin-top: 2em;
 }
 
 #event-info {
@@ -258,8 +263,7 @@ footer {
 }
 
 .glitch {
-	position: relative;
-	margin: 0 auto;
+	position: relative;;
 	cursor: pointer;
 	display: inline-block;
 }

@@ -7,6 +7,12 @@ const logger = require('morgan')
 
 const url = 'mongodb://localhost:27017/teaser2017'
 const db = require('monk')(url)
+db.then(() => {
+  console.log('Connected to mongo database')
+}).catch((err) => {
+  console.error(err)
+  throw err
+}) // TODO figure out how to quit page
 const people = db.get('people')
 
 app.use(bodyParser.json())
@@ -25,32 +31,33 @@ apiRouter.get('/', function(req, res) {
 })
 
 apiRouter.post('/preregister', function(req, res) {
+  console.log(req.body)
   function isValidEmail(emailAddr) {
     // TODO implement this
     return true
   }
-  
+
   const email = req.body.email
   const school = req.body.school
 
   if (!email) {
-    res.status(400).json({ error: 'email missing' })
+    res.status(400).json({ error: 'Missing Email Address' })
     return
   }
 
   if (!isValidEmail(email)) {
-    res.status(400).json({ error: 'email not valid' })
+    res.status(400).json({ error: 'Email address not valid' })
     return
   }
 
   if (!school) {
-    res.status(400).json({ error: 'school missing' })
+    res.status(400).json({ error: 'Missing School' })
     return
   }
 
   people.findOne({ email: email }).then((person) => {
     if (person) {
-      res.status(400).json({ error: 'email already recorded' })
+      res.status(400).json({ error: '\'' + email + '\' has already been recorded' })
       return
     }
 

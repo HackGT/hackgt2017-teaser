@@ -26,12 +26,20 @@ window.onload = function() {
     send('/api/preregister', 'POST', submission, function(req, res) {
       if (req.status === 200) {
         console.log('Success!')
+        form.elements.submit.value = 'Success!'
+        form.reset()
       } else if (req.status === 400) {
         console.log('Your fault:', res.error)
+        form.elements.submit.value = 'Error!'
+        alert(res.error)
       } else {
         console.log('My fault:', res)
       }
     })
+  }
+
+  form.oninput = function() {
+    form.elements.submit.value = 'TUNE IN'
   }
 
   // configure school suggestion

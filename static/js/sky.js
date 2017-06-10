@@ -117,8 +117,4 @@ var BASE_CONFIG = {
 
 
 var front_config = JSON.parse(JSON.stringify(BASE_CONFIG));
-particlesJS('front-stars', front_config);
-
-var mid_config = JSON.parse(JSON.stringify(BASE_CONFIG));
-mid_config.particles.size.value = 1;
-particlesJS('mid-stars', mid_config);
+particlesJS('stars', front_config);

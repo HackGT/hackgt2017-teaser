@@ -17,40 +17,27 @@ body, input {
 
 .alleyway {
 	height: 100vh;
-	background: url("../images/NightSkyAlley.png");
 }
 
-#front-stars {
-	height: 50vh;
+#stars {
+	height: 100vh;
 	position: absolute;
-	left: 0px;
-	right: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
+	right: 0;
 }
 
-#mid-stars {
-	height: 50vh;
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	top: 25vh;
+#star-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -100;
+	height: 100vh;
 }
-
-#back-stars {
-	height: 50vh;
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	top: 50vh;
-}
-
 .main-page {
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	top: 100vh;
-	background: #000 url("../images/bg-wall.jpg") no-repeat center center fixed;
-	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;
 					animation: hue-flicker 10s infinite;
 	text-align: center;
@@ -95,6 +82,17 @@ input[type="submit"], input[type="button"] {
 	width: 7em;
 }
 
+input[type="text"], input[type="email"] {
+	background-color: #222;
+	opacity: 0.8;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+	background-color: #444;
+	opacity: 0.8;
+}
+
+
 .awesomplete {
 	color: white;
 	text-shadow: none;
@@ -127,10 +125,6 @@ input[type="submit"], input[type="button"] {
 
 .awesomplete > span.visually-hidden {
 	display: none;
-}
-
-.sponsor-btn {
-	margin-top: 2em;
 }
 
 #event-info {

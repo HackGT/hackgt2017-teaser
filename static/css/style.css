@@ -17,7 +17,7 @@ body, input {
 
 .alleyway {
 	height: 100vh;
-	background: url("../assets/NightSkyAlley.png");
+	background: url("../images/NightSkyAlley.png");
 }
 
 #front-stars {
@@ -49,7 +49,7 @@ body, input {
 	left: 0px;
 	right: 0px;
 	top: 100vh;
-	background: #000 url("../assets/bg-wall.jpg") no-repeat center center fixed;
+	background: #000 url("../images/bg-wall.jpg") no-repeat center center fixed;
 	background-size: cover;
 	-webkit-animation: hue-flicker 10s infinite;
 					animation: hue-flicker 10s infinite;

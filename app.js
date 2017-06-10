@@ -1,6 +1,7 @@
 const fs = require('fs')
+const express = require('express')
 
-const app = require('express')()
+const app = express()
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 
@@ -12,36 +13,41 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(logger('combined'))
 
+app.use(express.static('static'))
+
 const schools = JSON.parse(fs.readFileSync('data/schools.json'))
 
-app.get('/', function(req, res) {
+const apiRouter = express.Router()
+app.use('/api', apiRouter)
+
+apiRouter.get('/', function(req, res) {
   res.send('Hello, HackGT. Status OK')
 })
 
-function isValidEmail(emailAddr) {
-  // TODO implement this
-  return true
-}
-
-app.post('/preregister', function(req, res) {
+apiRouter.post('/preregister', function(req, res) {
+  function isValidEmail(emailAddr) {
+    // TODO implement this
+    return true
+  }
+  
   const email = req.body.email
   const school = req.body.school
-  
+
   if (!email) {
     res.status(400).json({ error: 'email missing' })
     return
   }
-  
+
   if (!isValidEmail(email)) {
     res.status(400).json({ error: 'email not valid' })
     return
   }
-  
+
   if (!school) {
     res.status(400).json({ error: 'school missing' })
     return
   }
-  
+
   people.findOne({ email: email }).then((person) => {
     if (person) {
       res.status(400).json({ error: 'email already recorded' })
@@ -56,7 +62,7 @@ app.post('/preregister', function(req, res) {
   })
 })
 
-app.post('/school-hint', function(req, res) {
+apiRouter.post('/school-hint', function(req, res) {
   const frag = (req.body.school || '').toLowerCase()
 
   if (!frag) {

@@ -95,6 +95,40 @@ input[type="submit"], input[type="button"] {
 	width: 7em;
 }
 
+.awesomplete {
+	color: white;
+	text-shadow: none;
+}
+
+.awesomplete > ul {
+	list-style: none;
+	padding: .2em .5em;
+	box-sizing: border-box;
+	border-radius: .3em;
+	text-align: left;
+
+	/* match width of inputs */
+	width: 15em;
+	max-width: 100%;
+
+	/* center the absolute div*/
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 1;
+
+	background-color: RGBA(0,0,0,.75);
+}
+
+.awesomplete > ul > li[aria-selected="true"] {
+	background-color: white;
+	color: black; 
+}
+
+.awesomplete > span.visually-hidden {
+	display: none;
+}
+
 .sponsor-btn {
 	margin-top: 2em;
 }

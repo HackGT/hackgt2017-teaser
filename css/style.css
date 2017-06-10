@@ -12,12 +12,12 @@ body, * {
 body, input {
 	font-size: 32px;
 	font-family: 'Iceland', cursive;
-    color: white;
+		color: white;
 }
 
 .alleyway {
-  height: 100vh;
-  background: url("../assets/NightSkyAlley.png");
+	height: 100vh;
+	background: url("../assets/NightSkyAlley.png");
 }
 
 #front-stars {
@@ -68,15 +68,30 @@ body, input {
 	align-self: center;
 }
 
-.main-page input[type="email"] {
-    min-width: 15em;
-    margin-top: 1em;
-    background-color: RGBA(255,255,255,.5);
-    border: 0;
+#preregister input {
+	width: 15em;
+	max-width: 100%;
+	display: block;
+	margin: .5em auto;
+	background-color: RGBA(0,0,0,.5);
+	border: 0;
+	border-radius: .3em;
+	color: white;
+	padding: .2em .5em;
+	box-sizing: border-box;
 }
 
-.main-page input[type="email"]::placeholder {
-    color: white;
+#preregister input:focus {
+	outline: none;
+}
+
+#preregister input::placeholder {
+	color: gray;
+}
+
+#preregister input[type="submit"] {
+	background-color: rgba(0,255,255,.65);
+	border: rgba(0,100,100,.65) .3em solid;
 }
 
 #event-info {
@@ -192,7 +207,7 @@ footer {
 #glitch-header {
 	font-family: 'Bungee', cursive;
 	font-style: italic;
-    font-size: 150%;
+	font-size: 150%;
 }
 
 #social-bar {
@@ -216,7 +231,7 @@ footer {
 	cursor: pointer;
 	-webkit-animation: social-spin 1.5s;
 					animation: social-spin 1.5s;
-		margin-bottom: 25%
+	margin-bottom: 25%
 }
 
 .social-link:nth-of-type(2) > .social-glyphs{
@@ -250,8 +265,8 @@ footer {
 }
 
 .glitch:hover {
-	-webkit-animation: flicker 3s infinite;
-					animation: flicker 3s infinite;
+	-webkit-animation: flicker 2s infinite;
+					animation: flicker 2s infinite;
 }
 
 @-webkit-keyframes flicker {

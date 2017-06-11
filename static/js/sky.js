@@ -18,11 +18,6 @@ var BASE_CONFIG = {
         },
         "polygon": {
           "nb_sides": 5
-        },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
         }
       },
       "opacity": {
@@ -77,7 +72,7 @@ var BASE_CONFIG = {
           "enable": true,
           "mode": "push"
         },
-        "resize": true
+        "resize": false
       },
       "modes": {
         "grab": {
@@ -115,6 +110,4 @@ var BASE_CONFIG = {
     }
   };
 
-
-var front_config = JSON.parse(JSON.stringify(BASE_CONFIG));
-particlesJS('stars', front_config);
+particlesJS('stars', BASE_CONFIG);

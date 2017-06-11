@@ -5,7 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 
-const url = 'mongodb://localhost:27017/teaser2017'
+const url = process.env.MONGO_URL || 'mongodb://localhost:27017/teaser2017';
 const db = require('monk')(url)
 db.then(() => {
   console.log('Connected to mongo database')

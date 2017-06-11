@@ -28,10 +28,7 @@ body, input {
 }
 
 .main-page {
-	background-image: url("../images/NightSkyAlley.png");
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background: radial-gradient(at 20%, #BFB6CE, #1B1C2A);
 	position: absolute;
 	left: 0px;
 	right: 0px;

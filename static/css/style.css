@@ -32,17 +32,25 @@ body, input {
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	-webkit-animation: hue-flicker 10s infinite;
-					animation: hue-flicker 10s infinite;
+	min-height: 100vh;
 	text-align: center;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 }
 
+.main-page * {
+	-webkit-animation: hue-flicker 10s infinite;
+					animation: hue-flicker 10s infinite;
+}
+
 .main-page > .content {
 	align-self: center;
+}
+
+#logo {
+	height: 200px;
+	width: auto;
 }
 
 h3:last-of-type {
@@ -87,7 +95,6 @@ input[type="text"]:focus, input[type="email"]:focus {
 	opacity: 0.8;
 }
 
-
 .awesomplete {
 	color: white;
 	text-shadow: none;
@@ -128,8 +135,6 @@ input[type="text"]:focus, input[type="email"]:focus {
 
 footer {
 	font-size: 70%;
-	position: absolute;
-	bottom: 20px;
 	text-align: center;
 	width: 100%;
 }

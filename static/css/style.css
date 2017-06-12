@@ -57,7 +57,7 @@ h3:last-of-type {
 	margin-bottom: 20px;
 }
 
-input {
+input, .sponsor-btn {
 	width: 15em;
 	max-width: 100%;
 	display: block;
@@ -68,6 +68,7 @@ input {
 	color: white;
 	padding: .2em .5em;
 	box-sizing: border-box;
+	text-decoration: none;
 }
 
 input:focus {
@@ -78,11 +79,13 @@ input::placeholder {
 	color: gray;
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], .sponsor-btn {
 	background-color: rgba(0,255,255,.65);
 	border: rgba(0,100,100,.65) .3em solid;
 	width: 7em;
 	font-size: 75%;
+	display: block;
+	box-sizing: border-box;
 }
 
 input[type="text"], input[type="email"] {

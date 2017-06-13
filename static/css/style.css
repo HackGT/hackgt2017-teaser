@@ -259,6 +259,12 @@ footer {
 	left: 0;
 }
 
+@media (max-width: 640px) {
+	#social-bar {
+		display: none;
+	}
+}
+
 .social-glyphs {
 	max-height: 128px;
 	max-width: 128px;

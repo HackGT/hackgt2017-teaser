@@ -1,11 +1,13 @@
 const fs = require('fs')
 const express = require('express')
 
-const app = express()
 const bodyParser = require('body-parser')
 const logger = require('morgan')
+const ejs = require('ejs')
 
-const url = process.env.MONGO_URL || 'mongodb://localhost:27017/teaser2017';
+const url = process.env.MONGO_URL || 'mongodb://localhost:27017/teaser2017'
+const google_analytics = process.env.GOOGLE_ANALYTICS || 'Google Analytics Code'
+
 const db = require('monk')(url)
 db.then(() => {
   console.log('Connected to mongo database')
@@ -15,13 +17,19 @@ db.then(() => {
 }) // TODO figure out how to quit page
 const people = db.get('people')
 
+const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(logger('combined'))
+app.set('view engine', 'ejs')
 
 app.use(express.static('static'))
 
 const schools = JSON.parse(fs.readFileSync('data/schools.json'))
+
+app.get('/', function(req, res) {
+  res.render('index', {'google_analytics': google_analytics})
+})
 
 const apiRouter = express.Router()
 app.use('/api', apiRouter)

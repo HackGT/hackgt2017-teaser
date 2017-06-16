@@ -23,7 +23,7 @@ window.onload = function() {
       school: form.elements.school.value,
     }
 
-    send('/api/preregister', 'POST', submission, function(req, res) {
+    send('http://teaser2017.dev.hack.gt/api/preregister', 'POST', submission, function(req, res) {
       if (req.status === 200) {
         console.log('Success!')
         form.elements.submit.value = 'Success!'
@@ -48,7 +48,7 @@ window.onload = function() {
     list: ['Georgia Institute of Technology']
   })
   schoolInput.oninput = function() {
-    send('/api/school-hint', 'POST', {school: schoolInput.value}, function(req, res) {
+    send('http://teaser2017.dev.hack.gt/api/school-hint', 'POST', {school: schoolInput.value}, function(req, res) {
       autocomplete.list = res.hints
     })
   }

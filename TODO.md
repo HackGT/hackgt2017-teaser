@@ -1,7 +1,0 @@
- - [] email validation function (regex etc)
- - [x] real database
- - [] send verification email (smtp -> sendgrid)
-   - use IO?
- - [] unsubscribe
- - [] Mobile support
- - [] Add meta tags

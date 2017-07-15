@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# HACKGPROJECT VERSION: 7fe8037657ee0faa6bc717fb367a28333e5ffee5
+# HACKGPROJECT VERSION: 2bc55e5a25fe862aa51aebfc3136951b5c0fe13d
 set -euo pipefail
 PROJECT_TYPE="deployment"
 ORG_NAME="HackGT"
@@ -9,7 +9,7 @@ cd "${SOURCE_DIR}/.."
 set -x
 
 if ! hash docker &>/dev/null; then
-    echo "Cannot find `docker`!" >&2
+    echo 'Cannot find the docker binary!' >&2
     exit 64
 fi
 
@@ -25,17 +25,21 @@ image_name=$(basename "${remote%.*}")
 
 build_project_source() {
     if [[ -f Dockerfile.build ]]; then
-        local build_image_name="$(basename $(pwd))-build"
+        local build_image_name
+        build_image_name="$(basename "$(pwd)")-build"
         $docker build -f Dockerfile.build --rm -t "$build_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$build_image_name"
+        sudo chown -R "$(id -u):$(id -g)" .
     fi
 }
 
 test_project_source() {
     if [[ -f Dockerfile.test ]]; then
-        local test_image_name="$(basename $(pwd))-test"
+        local test_image_name
+        test_image_name="$(basename "$(pwd)")-test"
         $docker build -f Dockerfile.test --rm -t "$test_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$test_image_name"
+        sudo chown -R "$(id -u):$(id -g)" .
     fi
 }
 
@@ -44,12 +48,19 @@ build_project_container() {
 }
 
 publish_project_container() {
-    local git_rev=$(git rev-parse HEAD)
+    local git_rev
+    local branch
+    git_rev=$(git rev-parse HEAD)
+    branch=${TRAVIS_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}
+    local latest_tag_name="latest"
     local push_image_name="${DOCKER_ID_USER}/${image_name}"
+    if [[ $branch != master ]]; then
+        latest_tag_name="latest-${branch}"
+    fi
     docker login -u="${DOCKER_ID_USER}" -p="${DOCKER_PASSWORD}"
     docker tag "$image_name" "$push_image_name":"$git_rev"
     docker push "$push_image_name"
-    docker tag "$push_image_name":"$git_rev" "$push_image_name":latest
+    docker tag "$push_image_name":"$git_rev" "$push_image_name":"$latest_tag_name"
     docker push "$push_image_name"
 }
 
@@ -60,12 +71,12 @@ trigger_biodomes_build() {
     } }'
 
     curl -s -X POST \
-       -H "Content-Type: application/json" \
-       -H "Accept: application/json" \
-       -H "Travis-API-Version: 3" \
-       -H "Authorization: token ${TRAVIS_TOKEN}" \
-       -d "$body" \
-       https://api.travis-ci.org/repo/${ORG_NAME}%2Fbiodomes/requests
+         -H "Content-Type: application/json" \
+         -H "Accept: application/json" \
+         -H "Travis-API-Version: 3" \
+         -H "Authorization: token ${TRAVIS_TOKEN}" \
+         -d "$body" \
+         https://api.travis-ci.org/repo/${ORG_NAME}%2Fbiodomes/requests
 }
 
 install_jekyll() {
@@ -78,12 +89,17 @@ build_jekyll() {
 }
 
 commit_to_branch() {
-    local branch="${1:-gh-pages}"
-    local git_rev=$(git rev-parse --short HEAD)
+    local branch
+    local git_rev
+    branch="${1:-gh-pages}"
+    git_rev=$(git rev-parse --short HEAD)
     git config user.name 'Michael Eden'
     git config user.email 'themichaeleden@gmail.com'
+    git remote remove origin
+    git remote add origin \
+        "https://${GH_TOKEN}@github.com/${ORG_NAME}/${image_name}.git"
     git fetch origin
-    git reset "origin/$branch"
+    git reset "origin/$branch" || git checkout -b "$branch"
     git add -A .
     git status
     git commit -m "Automatic Travis deploy of ${git_rev}."
@@ -95,12 +111,16 @@ set_cloudflare_dns() {
     local name="$2"
     local content="$3"
     local proxied="$4"
-    local type_downcase=$(echo ${type} | tr '[:upper:]' '[:lower:]')
-    local name_downcase=$(echo ${name} | tr '[:upper:]' '[:lower:]')
-    local content_downcase=$(echo ${content} | tr '[:upper:]' '[:lower:]')
+    local type_downcase
+    local name_downcase
+    local content_downcase
+    local dns_records
+    type_downcase=$(echo "${type}" | tr '[:upper:]' '[:lower:]')
+    name_downcase=$(echo "${name}" | tr '[:upper:]' '[:lower:]')
+    content_downcase=$(echo "${content}" | tr '[:upper:]' '[:lower:]')
 
     # get all the dns records
-    local dns_records=$(curl -X GET \
+    dns_records=$(curl -X GET \
           -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
           -H "X-Auth-Key: ${CLOUDFLARE_AUTH}" \
           -H "Content-Type: application/json" \
@@ -108,7 +128,8 @@ set_cloudflare_dns() {
           | tr '[:upper:]' '[:lower:]')
 
     # Check if we already set it
-    local jq_exists=$(cat <<-END
+    local jq_exists
+    jq_exists=$(cat <<-END
         .result[]
         | select(.type == "${type_downcase}")
         | select(.name == "${name_downcase}")
@@ -121,15 +142,17 @@ END
     fi
 
     # Check if there's a different one already set
-    local duplicate_exists=$(echo "${dns_records}" \
-        | jq '.result[] | select(.name == "${name_downcase}")')
+    local duplicate_exists
+    duplicate_exists=$(echo "${dns_records}" \
+        | jq '.result[] | select(.name == '"${name_downcase}"')')
     if [[ -n $duplicate_exists ]]; then
         echo "Record with the same host exists, will not overwrite!"
         exit 64
     fi
 
     # Set IT!
-    local dns_record=$(cat <<-END
+    local dns_record
+    dns_record=$(cat <<-END
         {
             "type": "${type}",
             "name": "${name}",
@@ -138,7 +161,8 @@ END
         }
 END
     )
-    local dns_success=$(curl -X POST \
+    local dns_success
+    dns_success=$(curl -X POST \
          --data "$dns_record" \
          -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
          -H "X-Auth-Key: ${CLOUDFLARE_AUTH}" \
@@ -156,34 +180,35 @@ END
 
 
 deployment_project() {
-    build_project_source
-    test_project_source
     build_project_container
 
-    if [[ ${TRAVIS_BRANCH:-} = master && ${TRAVIS_PULL_REQUEST:-} = false ]]; then
+    if [[ ${TRAVIS_PULL_REQUEST:-} = false ]]; then
         publish_project_container
         trigger_biodomes_build
     fi
 }
 
 static_project() {
-    # If there's anything we want to do to build it,
-    # do it now. (if we're using something other than jekyll)
-    if [[ -f build.sh ]]; then
-        ./build.sh
-    fi
-
-    if [[ ${TRAVIS_BRANCH:-} = gh-pages && ${TRAVIS_PULL_REQUEST:-} = false ]]; then
+    if [[ ${TRAVIS_BRANCH:-} = master && ${TRAVIS_PULL_REQUEST:-} = false ]]; then
+        commit_to_branch 'gh-pages'
         set_cloudflare_dns CNAME "$(cat CNAME)" "${ORG_NAME}.github.io" true
     fi
 }
 
 
+# Build & Test the project, if needed.
+build_project_source
+test_project_source
 
-if [[ $PROJECT_TYPE = deployment ]]; then
-    deployment_project
-fi
+case "$PROJECT_TYPE" in
+    deployment)
+        deployment_project
+        ;;
+    static)
+        static_project
+        ;;
+    *)
+        echo "Unknown project type!"
+        exit 1
+esac
 
-if [[ $PROJECT_TYPE = static ]]; then
-    static_project
-fi

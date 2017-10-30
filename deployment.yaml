@@ -2,3 +2,5 @@ git:
     remote: https://github.com/HackGT/hackgt2017-teaser.git
     branch: master
 
+wants:
+    mongo: true
